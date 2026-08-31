@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Netwatch — local network</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="top">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <p class="kicker">Local supervisor</p>
+          <h1>Netwatch</h1>
+        </div>
+      </div>
+      <div class="actions">
+        <label class="toggle">
+          <input id="auto" type="checkbox" checked />
+          Auto-scan
+        </label>
+        <button id="scan-btn" type="button">Scan now</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Current LAN</p>
+          <h2 id="network-title">Detecting subnet…</h2>
+          <p class="lede" id="network-lede">Reading the default route and ARP table for this machine.</p>
+        </div>
+        <dl class="meta" id="meta">
+          <div><dt>Interface</dt><dd id="iface">—</dd></div>
+          <div><dt>This host</dt><dd id="self">—</dd></div>
+          <div><dt>Gateway</dt><dd id="gateway">—</dd></div>
+          <div><dt>Last scan</dt><dd id="last-scan">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="stats" aria-label="Summary">
+        <article>
+          <p class="stat-label">Online</p>
+          <p class="stat-value" id="stat-online">0</p>
+        </article>
+        <article>
+          <p class="stat-label">Known MAC</p>
+          <p class="stat-value" id="stat-mac">0</p>
+        </article>
+        <article>
+          <p class="stat-label">Hosts probed</p>
+          <p class="stat-value" id="stat-probed">0</p>
+        </article>
+        <article>
+          <p class="stat-label">Scan time</p>
+          <p class="stat-value" id="stat-ms">—</p>
+        </article>
+      </section>
+
+      <section class="board">
+        <div class="board-head">
+          <h3>Connected devices</h3>
+          <input id="filter" type="search" placeholder="Filter by IP, name, MAC…" />
+        </div>
+        <p class="status" id="status">Idle</p>
+        <div id="grid" class="grid"></div>
+        <p class="empty" id="empty" hidden>No devices matched that filter.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Scans only this machine’s current subnet. Incomplete ARP entries stay hidden until a host replies.</p>
+    </footer>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
